@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+
+	<!-- <bean/> definitions here -->
+	<bean id="id_admin" class="com.luis.cursospring.springtuto1.Administrador">
+		<!-- Por construnctor 
+		<constructor-arg name="idAd" value="16"/>
+		<constructor-arg name="nombre" value="Pepito"/>
+		-->
+		<!-- Por setters -->
+		<property name="idAd" value="32"/>
+		<property name="nombre" value="Grillo"/>
+		<!--
+		<property name="direccion" ref="id_direccion"/>
+		  -->
+	</bean>
+	
+	
+	<!--
+	<bean id="id_direccion" class="com.luis.cursospring.springtuto1.Direccion">
+		<constructor-arg name="calle" value="Biar"/>
+		<constructor-arg name="direccion" value="Nº18"/>
+		<constructor-arg name="cp" value="03430"/>
+	</bean>
+	  -->
+
+	<context:component-scan base-package="com.luis.cursospring.springtuto1">
+	</context:component-scan>
+	
+</beans>
