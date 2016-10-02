@@ -7,7 +7,7 @@ public class Administrador {
 	private int idAd;
 	private String nombre;
 	
-	//Le dice a Spring que este componente se va a inyectar desde algun lado
+	//Le dice a Spring que este componente se va a inyectar desde otra clase ->@Component
 	@Autowired
 	private Direccion direccion;
 

@@ -1,4 +1,4 @@
-package com.luis.cursospring.springtuto1;
+package com.luis.cursospring.springtuto2.pojo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

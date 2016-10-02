@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
 	public static void main(String[] args) {
-		//Permite acceder a la magia de spring
+		//Permite acceder a la 'magia' de spring
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
 		
 		Administrador adminstrador = (Administrador) applicationContext.getBean("id_admin");
