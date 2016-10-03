@@ -17,4 +17,6 @@ public interface IAdminDao {
 	public boolean update(Admin admin);
 	
 	public boolean delete (int id);
+	
+	public int[] saveAll(List<Admin> admins);
 }

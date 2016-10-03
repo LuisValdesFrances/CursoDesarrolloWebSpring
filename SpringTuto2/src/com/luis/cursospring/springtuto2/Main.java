@@ -2,6 +2,7 @@ package com.luis.cursospring.springtuto2;
 
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,12 +31,13 @@ public class Main {
 		admin.setFechaCreacion(new Date());
 		
 		try{
-			adminDao.save(admin);
+			List<Admin> admins = new ArrayList<Admin>();
+			admins.add(new Admin(20, "admin 20", "cargo x", new Date()));
+			admins.add(new Admin(21, "admin 21", "cargo x", new Date()));
+			admins.add(new Admin(22, "admin 22", "cargo x", new Date()));
+			admins.add(new Admin(23, "admin 23", "cargo x", new Date()));
 			
-			List<Admin> admins = adminDao.findAll();
-			for(Admin admin2: admins){
-				System.out.println(admin2);
-			}
+			adminDao.saveAll(admins);
 			
 		}catch(CannotGetJdbcConnectionException ex){
 			ex.printStackTrace();

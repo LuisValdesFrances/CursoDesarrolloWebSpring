@@ -13,7 +13,10 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.luis.cursospring.springtuto2.pojo.Admin;
 import com.luis.cursospring.springtuto2.pojo.AdminRowMapper;
@@ -84,6 +87,16 @@ public class AdminDaoImp implements IAdminDao{
 	public boolean delete(int idAd) {
 		return jdbcTemplate.update("delete from admin where idAd=:idAd", 
 				new MapSqlParameterSource("idAd", idAd)) == 1;
+	}
+	
+	/**
+	 * @Transactional Hace una insercion multiple como operacion atomica: Si alguna falla, no se realiza ninguna.
+	 */
+	@Transactional
+	public int[] saveAll(List<Admin> admins) {
+		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(admins.toArray());
+		return jdbcTemplate.batchUpdate("insert into admin (idAd, nombre, cargo, fechaCreacion) values(:idAd, :nombre, :cargo, :fechaCreacion)", 
+				batchArgs);
 	}
 
 	

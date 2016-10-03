@@ -11,7 +11,28 @@ public class Admin {
 	public int getIdAd() {
 		return idAd;
 	}
+	
+	
 
+	public Admin(int idAd, String nombre, String cargo, Date fechaCreacion) {
+		super();
+		this.idAd = idAd;
+		this.nombre = nombre;
+		this.cargo = cargo;
+		this.fechaCreacion = fechaCreacion;
+	}
+	
+	public Admin(String nombre, String cargo, Date fechaCreacion) {
+		super();
+		this.nombre = nombre;
+		this.cargo = cargo;
+		this.fechaCreacion = fechaCreacion;
+	}
+	
+	public Admin(){
+		
+	}
+	
 	public void setIdAd(int idAd) {
 		this.idAd = idAd;
 	}
