@@ -1,4 +1,4 @@
-package com.luis.cursospring.springtuto3.controller;
+package com.luis.cursospring.springtuto4.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
