@@ -20,6 +20,9 @@
 	</context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
+	<!-- Libreria jquery -->
+	<mvc:resources location="/resources/" mapping="/res/**" />
+	
 
 
 

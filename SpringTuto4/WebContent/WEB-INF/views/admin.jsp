@@ -7,6 +7,13 @@
 		<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Admin</title>
+		<!-- Scripts -->
+		<script type="text/javascript" src='<c:url value="/res/js/jquery.js"/>'></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				alert("Prueba exitosa");
+			});
+		</script>
 	</head>
 	<body>
 		<p>admin.jsp</p>
@@ -16,6 +23,15 @@
 		<!-- ${pageContext.request.contextPath} -> Rellena la URL de forma dinamica: http://localhost... -->
 		<sf:form action="${pageContext.request.contextPath}/admin/save" method="post" commandName="admin">
 			<table>
+				<!-- 
+				Spring bug
+				Peta si la vista intenta acceder a campos nulos. Solo muesto los cambios si idAd es DIFERENTE a 0 
+				
+				<c:if test="${admin.idAd ne 0}">
+					<sf:input path="idAd" type="hidden"/>
+					<sf:input path="fechaCreacion" type="hidden"/>
+				</c:if>
+				-->
 				<tr>
 					<td>Nombre</td>
 					<td><sf:input path="nombre" type="text"/></td>
@@ -31,10 +47,13 @@
 			</table>
 		</sf:form>
 		<br>
-		<c:out value="${result}"></c:out>
+		<c:out value="${result}"></c:out><br><br>
 		
 		<c:forEach items="${admins}" var="admin">
-			<c:out value="${admin}"/><br/>
+			<c:out value="${admin}"/>
+			<a href='<c:url value="/admin/${admin.idAd}/update"/>'>Actualizar</a> 
+			<br/>
+		</c:forEach>
 		
 		<br><a href='<c:url value="/about"/>'>About</a>
 	</body>
