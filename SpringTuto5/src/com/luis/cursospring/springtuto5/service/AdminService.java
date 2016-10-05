@@ -1,14 +1,15 @@
-package com.luis.cursospring.springtuto4.service;
+package com.luis.cursospring.springtuto5.service;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.luis.cursospring.springtuto4.dao.IAdminDao;
-import com.luis.cursospring.springtuto4.pojo.Admin;
+import com.luis.cursospring.springtuto5.dao.IAdminDao;
+import com.luis.cursospring.springtuto5.pojo.Admin;
 
 /**
  * Clase wrapper (Envolvente que se encarga de hacer de intermediaria entre las llamadas al modelo y el controlador)
@@ -21,11 +22,9 @@ public class AdminService {
 		@Autowired
 		private IAdminDao adminDao;
 		
-		public boolean save(Admin admin){
-			//SimpleDateFormat formatData = new SimpleDateFormat("yyyy-MM-dd");
-			//admin.setFechaCreacion(formatData.format(new Date()));
+		public void save(Admin admin){
 			admin.setFechaCreacion(new Timestamp(new Date().getTime()));
-			return adminDao.save(admin);
+			adminDao.save(admin);
 		}
 		
 		public List<Admin>findAll(){
@@ -36,15 +35,16 @@ public class AdminService {
 			return adminDao.findById(id);
 		}
 
-		public boolean saveOrUpdate(Admin admin) {
+		public void saveOrUpdate(Admin admin) {
 			if(admin.getIdAd() == 0){
-				return save(admin);
+				save(admin);
 			}else{
-				return adminDao.update(admin);
+				adminDao.update(admin);
 			}
 		}
 
-		public boolean delete(int id) {
-			return adminDao.delete(id);
+		public void delete(int id) {
+			Admin admin = adminDao.findById(id);
+			adminDao.delete(admin);
 		}
 }

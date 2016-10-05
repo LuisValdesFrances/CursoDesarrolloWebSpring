@@ -1,4 +1,4 @@
-package com.luis.cursospring.springtuto4.controller;
+package com.luis.cursospring.springtuto5.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.luis.cursospring.springtuto4.pojo.Admin;
-import com.luis.cursospring.springtuto4.service.AdminService;
+import com.luis.cursospring.springtuto5.pojo.Admin;
+import com.luis.cursospring.springtuto5.service.AdminService;
 
 /**
  * Para que toda esta fiesta funcione (Que el modelo pueda enviarse datos generados en la vista (quizas)
@@ -62,11 +62,8 @@ public class AdminController {
 			Model model, 
 			RedirectAttributes ra){
 		
-		if(adminService.saveOrUpdate(adminForm)){
-			ra.addFlashAttribute("result", "Cambios realizados con exito");
-		}else{
-			ra.addFlashAttribute("result", "No se ha podido insertar el registro");
-		}
+		adminService.saveOrUpdate(adminForm);
+		ra.addFlashAttribute("result", "Cambios realizados con exito");
 		return "redirect:/admin";
 	}
 	
@@ -78,6 +75,7 @@ public class AdminController {
 		
 		Admin admin = adminService.findById(id);
 		model.addAttribute("admin", admin);
+		//Carga el adminstrador con todos sus datos en la vista
 		return "admin";	
 	}
 	
@@ -85,11 +83,8 @@ public class AdminController {
 	public String delete(
 			@PathVariable("idAd") int id,
 			RedirectAttributes ra){
-		if(adminService.delete(id)){
-			ra.addFlashAttribute("result", "Cambios realizados con exito");
-		}else{
-			ra.addFlashAttribute("result", "No se ha podido eliminar el registro");
-		}
+		adminService.delete(id);
+		ra.addFlashAttribute("result", "Cambios realizados con exito");
 		return "redirect:/admin";
 	}
 

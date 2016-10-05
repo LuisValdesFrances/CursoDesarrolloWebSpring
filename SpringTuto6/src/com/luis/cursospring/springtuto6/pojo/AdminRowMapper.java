@@ -1,4 +1,4 @@
-package com.luis.cursospring.springtuto4.pojo;
+package com.luis.cursospring.springtuto6.pojo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
