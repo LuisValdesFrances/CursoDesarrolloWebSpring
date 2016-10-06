@@ -11,6 +11,12 @@
 		
 	</head>
 	<body>
+	
+		<!-- Mete como fragmento una vista(Asi no repito codigo a lo mierder) -->
+		<c:import url="/WEB-INF/views/menu.jsp"></c:import>
+		
+		<h1>Acceso a usuario</h1>
+	
 		<p>direccion.jsp</p>
 		
 		<!-- sf:form es un formulario mejorado de spring todos los campos que el usuario rellene

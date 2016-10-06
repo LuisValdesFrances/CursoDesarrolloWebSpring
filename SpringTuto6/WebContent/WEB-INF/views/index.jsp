@@ -8,10 +8,13 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
+	
+		<!-- Mete como fragmento una vista(Asi no repito codigo a lo mierder) -->
+		<c:import url="/WEB-INF/views/menu.jsp"></c:import>
+	
 		<p>index.jsp</p>
 		
-		
-		<c:out value="${adminForm}"/><br>
+		<c:out value="${adminForm}"/>
 		<!--
 		Atributos con ambito de vista: <c:out value="${message}"/><br>
 		Atributos con ambito de sesion: <c:out value="${sessionScope.result}"/>
